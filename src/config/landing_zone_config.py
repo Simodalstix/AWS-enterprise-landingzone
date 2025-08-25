@@ -7,7 +7,8 @@ class LandingZoneConfig:
     root_email: str = "root@company.com"
     
     # Account structure
-    core_accounts: Dict[str, str] = None
+    core_accounts: Dict[str, str] = None  # Shared infrastructure
+    security_accounts: Dict[str, str] = None  # Security services
     workload_accounts: Dict[str, str] = None
     
     # Security settings
@@ -22,10 +23,15 @@ class LandingZoneConfig:
     def __post_init__(self):
         if self.core_accounts is None:
             self.core_accounts = {
+                "shared-services": "shared@company.com",  # Network hub
+                "dns": "dns@company.com"  # Centralized DNS
+            }
+            
+        if self.security_accounts is None:
+            self.security_accounts = {
                 "security": "security@company.com",
                 "log-archive": "logs@company.com", 
-                "audit": "audit@company.com",
-                "shared-services": "shared@company.com"
+                "audit": "audit@company.com"
             }
         
         if self.workload_accounts is None:

@@ -15,6 +15,12 @@ class AccountFactory(Construct):
         self._create_cross_account_roles()
     
     def _create_organizational_units(self):
+        self.core_ou = orgs.CfnOrganizationalUnit(
+            self, "CoreOU",
+            name="Core",
+            parent_id=self.organization.attr_root_id
+        )
+        
         self.security_ou = orgs.CfnOrganizationalUnit(
             self, "SecurityOU",
             name="Security",

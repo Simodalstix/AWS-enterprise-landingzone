@@ -21,11 +21,22 @@ class CoreStack(Stack):
     
     def _create_core_accounts(self):
         self.core_accounts = {}
+        self.security_accounts = {}
         
+        # Core infrastructure accounts (Core OU)
         for account_name, email in self.config.core_accounts.items():
+            account = self.account_factory.create_account(
+                name=account_name,
+                email=email,
+                ou_id=self.account_factory.core_ou.ref
+            )
+            self.core_accounts[account_name] = account
+            
+        # Security service accounts (Security OU)
+        for account_name, email in self.config.security_accounts.items():
             account = self.account_factory.create_account(
                 name=account_name,
                 email=email,
                 ou_id=self.account_factory.security_ou.ref
             )
-            self.core_accounts[account_name] = account
+            self.security_accounts[account_name] = account
