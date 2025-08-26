@@ -3,6 +3,7 @@ from aws_cdk import aws_cloudtrail as cloudtrail
 from aws_cdk import aws_s3 as s3
 from aws_cdk import aws_budgets as budgets
 from aws_cdk import aws_cloudwatch as cloudwatch
+from aws_cdk import Duration
 
 class LandingZoneMonitoring(Construct):
     def __init__(self, scope: Construct, construct_id: str, **kwargs):
@@ -17,7 +18,25 @@ class LandingZoneMonitoring(Construct):
             self, "CloudTrailBucket",
             encryption=s3.BucketEncryption.S3_MANAGED,
             block_public_access=s3.BlockPublicAccess.BLOCK_ALL,
-            versioned=True
+            versioned=True,
+            enforce_ssl=True,
+            lifecycle_rules=[
+                s3.LifecycleRule(
+                    id="CloudTrailLogRetention",
+                    enabled=True,
+                    transitions=[
+                        s3.Transition(
+                            storage_class=s3.StorageClass.INFREQUENT_ACCESS,
+                            transition_after=Duration.days(30)
+                        ),
+                        s3.Transition(
+                            storage_class=s3.StorageClass.GLACIER,
+                            transition_after=Duration.days(90)
+                        )
+                    ],
+                    expiration=Duration.days(2555)  # 7 years retention
+                )
+            ]
         )
         
         self.organization_trail = cloudtrail.Trail(

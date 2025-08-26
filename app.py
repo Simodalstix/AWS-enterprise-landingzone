@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-import aws_cdk as cdk
+from aws_cdk import App
 from src.stacks.core_stack import CoreStack
 from src.stacks.security_stack import SecurityStack
 from src.stacks.network_stack import NetworkStack
 from src.stacks.workload_stack import WorkloadStack
 from src.config.landing_zone_config import LandingZoneConfig
 
-app = cdk.App()
+app = App()
 config = LandingZoneConfig()
 
 core = CoreStack(app, "LandingZone-Core", config=config)

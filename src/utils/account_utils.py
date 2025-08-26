@@ -1,9 +1,9 @@
-import boto3
+from boto3 import client
 from typing import Dict, List
 
 class AccountUtils:
     def __init__(self):
-        self.organizations = boto3.client('organizations')
+        self.organizations = client('organizations')
     
     def get_account_id_by_name(self, account_name: str) -> str:
         """Get account ID by account name"""

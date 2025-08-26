@@ -2,8 +2,14 @@ from constructs import Construct
 from aws_cdk import aws_ec2 as ec2
 
 class VpcTemplate(Construct):
+    VALID_WORKLOAD_TYPES = {"standard", "web", "database"}
+    
     def __init__(self, scope: Construct, construct_id: str, cidr: str, workload_type: str = "standard", **kwargs):
         super().__init__(scope, construct_id)
+        
+        # Validate workload type against allowed values
+        if workload_type not in self.VALID_WORKLOAD_TYPES:
+            raise ValueError(f"Invalid workload_type: {workload_type}. Must be one of {self.VALID_WORKLOAD_TYPES}")
         
         self.vpc = ec2.Vpc(
             self, "VPC",
