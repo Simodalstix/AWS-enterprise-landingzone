@@ -49,7 +49,7 @@ class ServiceControlPolicies(Construct):
             name="SecurityBaseline",
             description="Baseline security controls",
             type="SERVICE_CONTROL_POLICY",
-            content=json.dumps(security_policy)
+            content=security_policy
         )
     
     def _create_workload_restrictions_scp(self):
@@ -80,5 +80,5 @@ class ServiceControlPolicies(Construct):
             name="WorkloadRestrictions",
             description="Workload environment restrictions",
             type="SERVICE_CONTROL_POLICY", 
-            content=json.dumps(workload_policy)
+            content=workload_policy
         )

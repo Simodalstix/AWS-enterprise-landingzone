@@ -52,6 +52,5 @@ class AccountFactory(Construct):
         return orgs.CfnAccount(
             self, f"Account{name}",
             account_name=name,
-            email=email,
-            parent_id=ou_id
+            email=email
         )

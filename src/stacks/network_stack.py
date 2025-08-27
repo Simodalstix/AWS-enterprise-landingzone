@@ -25,6 +25,7 @@ class NetworkStack(Stack):
         
         # Attach shared VPC to Transit Gateway
         self.transit_gateway.attach_vpc(
+            vpc_name="Shared",
             vpc_id=self.shared_vpc.vpc.vpc_id,
             subnet_ids=[subnet.subnet_id for subnet in self.shared_vpc.vpc.private_subnets],
             route_table_id=self.transit_gateway.shared_route_table.ref
