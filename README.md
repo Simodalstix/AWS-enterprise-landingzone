@@ -19,6 +19,10 @@ Setting up AWS at enterprise scale requires careful planning of account structur
 
 ## Architecture
 
+![AWS Enterprise Landing Zone Architecture](diagrams/enterprise-landingzone-diagram.svg)
+
+*Architecture diagram created using AWS official icons and Excalidraw*
+
 ### Organizational Structure
 
 - **Core Accounts**: Security, Log Archive, Audit, Shared Services
