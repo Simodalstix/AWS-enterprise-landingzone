@@ -3,6 +3,8 @@
 [![CI](https://github.com/Simodalstix/AWS-enterprise-landingzone/actions/workflows/ci.yml/badge.svg)](https://github.com/Simodalstix/AWS-enterprise-landingzone/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Release](https://img.shields.io/github/v/release/Simodalstix/AWS-enterprise-landingzone?include_prereleases)](https://github.com/Simodalstix/AWS-enterprise-landingzone/releases)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![CDK](https://img.shields.io/badge/CDK-2.100.0+-orange.svg)](https://docs.aws.amazon.com/cdk/)
 
 Production-ready AWS Landing Zone using CDK with enterprise organizational structure, governance, and security baseline.
 
