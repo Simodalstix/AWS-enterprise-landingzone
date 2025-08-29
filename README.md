@@ -18,11 +18,13 @@ Setting up AWS at enterprise scale requires careful planning of account structur
 ## Architecture
 
 ### Organizational Structure
+
 - **Core Accounts**: Security, Log Archive, Audit, Shared Services
 - **Workload Accounts**: Dev, Staging, Production
 - **OUs**: Security OU, Workloads OU, Sandbox OU
 
 ### Security Baseline
+
 - GuardDuty threat detection
 - Security Hub centralized findings
 - Config rules for compliance
@@ -30,11 +32,13 @@ Setting up AWS at enterprise scale requires careful planning of account structur
 - Cross-account IAM roles
 
 ### Networking Foundation
+
 - Transit Gateway hub-and-spoke model
 - Standardized VPC templates
 - Network segmentation and security groups
 
 ### Governance & Compliance
+
 - Service Control Policies (SCPs)
 - Organization-wide CloudTrail
 - Budget controls and monitoring
