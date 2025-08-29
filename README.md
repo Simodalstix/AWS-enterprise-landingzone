@@ -1,6 +1,19 @@
 # AWS Enterprise Landing Zone
 
+[![CI](https://github.com/Simodalstix/AWS-enterprise-landingzone/actions/workflows/ci.yml/badge.svg)](https://github.com/Simodalstix/AWS-enterprise-landingzone/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Release](https://img.shields.io/github/v/release/Simodalstix/AWS-enterprise-landingzone?include_prereleases)](https://github.com/Simodalstix/AWS-enterprise-landingzone/releases)
+
 Production-ready AWS Landing Zone using CDK with enterprise organizational structure, governance, and security baseline.
+
+## Why This Matters
+
+Setting up AWS at enterprise scale requires careful planning of account structure, security baselines, and governance. This landing zone provides a battle-tested foundation that:
+
+- **Reduces setup time** from months to days
+- **Enforces security best practices** from day one
+- **Scales with your organization** as you grow
+- **Maintains compliance** with automated governance
 
 ## Architecture
 
@@ -29,12 +42,20 @@ Production-ready AWS Landing Zone using CDK with enterprise organizational struc
 
 ## Quick Start
 
+**Prerequisites:** AWS CLI configured, Node.js 20+, Python 3.9+
+
 ```bash
 # Install dependencies
 pip install -r requirements.txt
+npm install -g aws-cdk
+
+# Configure your settings
+# Edit src/config/landing_zone_config.py
+
+# Bootstrap CDK (one-time setup)
+cdk bootstrap
 
 # Deploy landing zone
-cdk bootstrap
 cdk deploy --all
 ```
 
@@ -69,15 +90,26 @@ src/
 
 ## Configuration
 
-Modify `src/config/landing_zone_config.py` to customize:
-- Account structure and emails
-- Network CIDR blocks
-- Security settings
-- Organizational units
+Customize your deployment by editing `src/config/landing_zone_config.py`:
 
-## Deployment Order
+- **Account emails** - Update with your organization's email addresses
+- **Network CIDRs** - Adjust IP ranges for your network design
+- **Security settings** - Configure compliance and monitoring preferences
+- **Organizational units** - Define your account structure
 
-1. Core Stack - Organization and accounts
-2. Security Stack - Security baseline
-3. Network Stack - Transit Gateway and shared VPC
-4. Workload Stack - Environment VPCs
+## Deployment
+
+Stacks deploy in dependency order automatically. Manual order if needed:
+
+1. **Core Stack** - Organization and accounts
+2. **Security Stack** - Security baseline
+3. **Network Stack** - Transit Gateway and shared VPC
+4. **Workload Stack** - Environment VPCs
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+
+## License
+
+MIT License - see [LICENSE](LICENSE) file for details.

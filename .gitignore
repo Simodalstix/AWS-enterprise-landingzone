@@ -4,10 +4,6 @@
 node_modules/
 cdk.out/
 cdk.context.json
-
-# Modals
-project-card.vue
-project-modal.vue
 # Python
 __pycache__/
 *.py[cod]
